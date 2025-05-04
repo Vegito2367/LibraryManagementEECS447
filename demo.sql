@@ -7,10 +7,8 @@ SELECT
     SUM(
         CASE 
             WHEN t.ReturnDate IS NULL THEN 
-                -- For books not yet returned, calculate based on current date
                 COALESCE(0.25 * (CURRENT_DATE - t.DueDate), 0)
             WHEN t.ReturnDate > t.DueDate THEN
-                -- For returned books that were late
                 0.25 * (t.ReturnDate - t.DueDate)
             ELSE 0
         END
@@ -61,7 +59,6 @@ ORDER BY
 
 
 -- ===============================================================
-
 
 -- 3. Frequent Borrowers: Members who borrowed most in a genre
 
@@ -150,7 +147,7 @@ SELECT
 FROM 
     Transactions t
 JOIN
-    Copy c ON t.itemid = c.copyid::VARCHAR  -- Convert CopyID to VARCHAR if needed
+    Copy c ON t.itemid = c.copyid::VARCHAR
 JOIN
     Books b ON c.ISBN = b.ISBN
 JOIN 
@@ -160,7 +157,7 @@ JOIN
 WHERE 
     t.ItemType = 'Book'
     AND t.TransactionType = 'Borrow'
-    AND g.GenreName = 'Mystery' -- Replace with desired genre
+    AND g.GenreName = 'Mystery'
 GROUP BY 
     g.GenreName;
 
