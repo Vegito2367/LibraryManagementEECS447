@@ -1,4 +1,3 @@
-
 --1. Fine Calculation Report
 
 SELECT 
@@ -31,8 +30,6 @@ ORDER BY
     TotalFinesDue DESC;
 
 -- ===============================================================
-
-
 -- 2. Book Availability: Display available books in a specific genre
 
 
@@ -59,7 +56,6 @@ ORDER BY
 
 
 -- ===============================================================
-
 -- 3. Frequent Borrowers: Members who borrowed most in a genre
 
 SELECT
@@ -91,9 +87,6 @@ LIMIT 10;
 
 -- ===============================================================
 -- 4. Books Due Soon: List of books due within the next 25 days
-
-SELECT '4. BOOKS DUE SOON REPORT' AS REPORT_TITLE;
-
 SELECT 
     u.Name AS BorrowerName,
     t.DueDate,
@@ -163,11 +156,8 @@ GROUP BY
 
 
 -- ===============================================================
-
-
 -- 7. Most Popular Author: Authors with most borrows in last month
 
-SELECT '7. MOST POPULAR AUTHORS REPORT' AS REPORT_TITLE;
 
 SELECT 
     b.Author,
